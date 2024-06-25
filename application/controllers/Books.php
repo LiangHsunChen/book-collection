@@ -23,16 +23,22 @@ class Books extends CI_Controller {
     /**
      * Index
      *
-     * Loads all books from the database and displays them.
+     * Loads the books page.
      */
     public function index()
     {
-
-        // Get all books from the database
-        $data['books'] = $this->Book_model->get_books();
-
         // Load the view
-        $this->load->view('books', $data);
+        $this->load->view('books');
+    }
+
+    public function get_books()
+    {
+        // Get all books from the database
+        $books = $this->Book_model->get_books();
+        // Send the books as JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($books));
     }
 }
 
