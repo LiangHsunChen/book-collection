@@ -20,4 +20,4 @@ application/logs/*
 /system/
 
 #vue
-/vue-app/
+assets/vue-app/
