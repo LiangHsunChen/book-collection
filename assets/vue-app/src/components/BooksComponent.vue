@@ -8,7 +8,7 @@
       Insert New Book
     </button>
 
-    <div v-if="books.length > 0">
+    <div class="books-table" v-if="books.length > 0">
       <table>
         <thead>
           <tr>
@@ -70,6 +70,7 @@ export default {
   background-color: #f9f9f9;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 h1 {
@@ -96,6 +97,9 @@ p {
 
 .create-button:hover {
   background-color: #0056b3;
+}
+.books-table {
+  overflow: auto;
 }
 
 table {

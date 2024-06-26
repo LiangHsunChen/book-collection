@@ -57,7 +57,7 @@
         <textarea
           id="description"
           v-model="localBook.description"
-          class="form-control"
+          class="form-control description-textarea"
         ></textarea>
         <!-- Display description error message -->
         <br />
@@ -66,7 +66,7 @@
         }}</small>
       </div>
 
-      <button type="submit" class="create-button">Insert New Book</button>
+      <button type="submit" class="create-button">Create</button>
 
       <div v-if="successMessage" class="success-message">
         {{ successMessage }}
@@ -190,6 +190,10 @@ export default {
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+.description-textarea {
+  height: 150px; /* Adjust the height as needed */
+  width: 100%;
 }
 
 .create-button {

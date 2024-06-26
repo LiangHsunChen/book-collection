@@ -1,7 +1,7 @@
 <template>
   <div id="create-book-component">
-    <h1>Create Book Page</h1>
-    <p>Welcome to the create book page.</p>
+    <h1>Create a new Book</h1>
+    <p>Please fill out the form below to create a new book.</p>
 
     <BookFormComponent :action="action" :submitForm="submitForm" />
   </div>
@@ -53,10 +53,21 @@ export default {
 
 <style scoped>
 #create-book-component {
-  margin-top: 20px;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  max-width: 800px;
+  margin: 0 auto;
   background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+p {
+  text-align: center;
+  color: #666;
 }
 </style>
