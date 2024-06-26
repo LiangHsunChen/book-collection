@@ -134,6 +134,27 @@ class Books extends CI_Controller {
 
         return true;
     }
+
+    public function view_book($id)
+    {
+        // Check if the request method is HEAD
+        if ($_SERVER['REQUEST_METHOD'] === 'HEAD') {
+            // Return an empty response with a 200 status code for HEAD requests
+            $this->output
+                ->set_content_type('application/json')
+                ->set_status_header(200);
+            return;
+        }
+
+        // Check if the request method is GET
+        if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+            show_error('Method not allowed', 405);
+            return;
+        }
+
+        $data['book'] = $this->Book_model->get_book($id);
+        $this->load->view('view_book', $data);
+    }
 }
 
 ?>
