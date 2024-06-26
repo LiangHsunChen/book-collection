@@ -3,7 +3,7 @@
     <h1>Create Book Page</h1>
     <p>Welcome to the create book page.</p>
 
-    <BookFormComponent :submitForm="submitForm" />
+    <BookFormComponent :action="action" :submitForm="submitForm" />
   </div>
 </template>
 
@@ -17,6 +17,7 @@ export default {
   },
   data() {
     return {
+      action: "created",
       years: [],
     };
   },

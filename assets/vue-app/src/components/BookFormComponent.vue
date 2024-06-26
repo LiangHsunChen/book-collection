@@ -80,6 +80,7 @@ export default {
         description: "",
       }),
     },
+    action: String,
     submitForm: {
       type: Function,
       required: true,
@@ -107,7 +108,7 @@ export default {
       this.submitForm(this.localBook)
         .then((data) => {
           this.resetForm();
-          this.successMessage = `Book ${data.title} successfully created with id: ${data.id}`;
+          this.successMessage = `Book ${data.title} successfully ${this.action} with id: ${data.id}`;
         })
         .catch((error) => {
           console.error(error);
