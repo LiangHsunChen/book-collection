@@ -153,6 +153,11 @@ class Books extends CI_Controller {
         }
 
         $data['book'] = $this->Book_model->get_book($id);
+        // Check if the book exists
+        if (!$data['book']) {
+            show_404();
+            return;
+        }
         $this->load->view('view_book', $data);
     }
 }
