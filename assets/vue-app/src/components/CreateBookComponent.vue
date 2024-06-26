@@ -17,8 +17,7 @@ export default {
   },
   data() {
     return {
-      action: "created",
-      years: [],
+      action: "create",
     };
   },
   methods: {

@@ -22,9 +22,9 @@
           required
         />
         <!-- Display author error message -->
-        <small v-if="authorError" class="error-message">{{
-          authorError
-        }}</small>
+        <small v-if="authorError" class="error-message">
+          {{ authorError }}
+        </small>
       </div>
 
       <div class="form-group">
@@ -61,12 +61,12 @@
         ></textarea>
         <!-- Display description error message -->
         <br />
-        <small v-if="descriptionError" class="error-message">{{
-          descriptionError
-        }}</small>
+        <small v-if="descriptionError" class="error-message">
+          {{ descriptionError }}
+        </small>
       </div>
 
-      <button type="submit" class="create-button">Create</button>
+      <button type="submit" class="create-button">{{ actionButton }}</button>
 
       <div v-if="successMessage" class="success-message">
         {{ successMessage }}
@@ -104,10 +104,17 @@ export default {
       successMessage: "",
       authorError: "",
       descriptionError: "",
+      actionButton: "",
     };
   },
   created() {
     this.populateYears();
+    this.actionButton =
+      this.action === "create"
+        ? "Create"
+        : this.action === "update"
+        ? "Update"
+        : "";
   },
   methods: {
     populateYears() {
@@ -144,7 +151,7 @@ export default {
       this.submitForm(this.localBook)
         .then((data) => {
           this.resetForm();
-          this.successMessage = `Book ${data.title} successfully ${this.action} with id: ${data.id}`;
+          this.successMessage = `Book ${data.title} successfully ${this.action}d with id: ${data.id}`;
         })
         .catch((error) => {
           console.error(error);
