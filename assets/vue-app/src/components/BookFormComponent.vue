@@ -21,6 +21,10 @@
           class="form-control"
           required
         />
+        <!-- Display author error message -->
+        <small v-if="authorError" class="error-message">{{
+          authorError
+        }}</small>
       </div>
 
       <div class="form-group">
@@ -55,6 +59,11 @@
           v-model="localBook.description"
           class="form-control"
         ></textarea>
+        <!-- Display description error message -->
+        <br />
+        <small v-if="descriptionError" class="error-message">{{
+          descriptionError
+        }}</small>
       </div>
 
       <button type="submit" class="create-button">Insert New Book</button>
@@ -92,6 +101,9 @@ export default {
       // Create a local copy of the book prop
       localBook: { ...this.book },
       years: [],
+      successMessage: "",
+      authorError: "",
+      descriptionError: "",
     };
   },
   created() {
@@ -104,7 +116,31 @@ export default {
         this.years.push(year);
       }
     },
+    validateForm() {
+      let isValid = true;
+      this.authorError = "";
+      this.descriptionError = "";
+
+      // Validate author (must be a firstname and lastname) => "John Doe"
+      const authorRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
+      if (!authorRegex.test(this.localBook.author)) {
+        this.authorError =
+          "Author must contains first name and last name. e,g: John Doe";
+        isValid = false;
+      }
+
+      // Validate description (must be at least 100 characters)
+      if (this.localBook.description.length < 100) {
+        this.descriptionError = "Description must be at least 100 characters.";
+        isValid = false;
+      }
+
+      return isValid;
+    },
     handleSubmit() {
+      if (!this.validateForm()) {
+        return;
+      }
       this.submitForm(this.localBook)
         .then((data) => {
           this.resetForm();
@@ -174,5 +210,10 @@ export default {
   margin-top: 20px;
   color: green;
   font-weight: bold;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
 }
 </style>
