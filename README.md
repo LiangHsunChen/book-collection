@@ -27,4 +27,7 @@ CRUD Application for a Book Collection
      
      ***Solution:*** Turned out to be needing to add index.php in between the url ```BaseUrl/index.php/books```. Added .htaccess to rewrite the path.
 
+  5. Accidently replaced whole Vue app directory
+     When trying to make the built js and css files automatically built under ```assets``` directory instead of dist, the whole Vue app directory include Vue packages and node modules.
      
+     ***Solution:*** Recreated vue project, retrieved main.js, config, and components files from git then put them back in ```components``` directory
