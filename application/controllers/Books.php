@@ -31,6 +31,11 @@ class Books extends CI_Controller {
         $this->load->view('books');
     }
 
+    /**
+     * Get Books
+     *
+     * Sends all books as JSON.
+     */
     public function get_books()
     {
         // Check if the request method is GET
@@ -45,6 +50,23 @@ class Books extends CI_Controller {
             ->set_content_type('application/json')
             ->set_output(json_encode($books));
     }
+
+    /**
+     * Create Book
+     *
+     * Creates a book and sends the book ID as JSON.
+     * For GET requests, it loads the create book page.
+     * For POST requests, it creates the book.
+     */
+    public function create_book()
+    {
+        // Check if the request method is GET
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            // Load the view
+            $this->load->view('create_book');
+            return;
+        }
+
 }
 
 ?>
