@@ -21,3 +21,10 @@ CRUD Application for a Book Collection
      Had no experience in integrating these 2, having difficulties in figuring out how to display vue component in view correctly.
 
      ***Solution:*** Search online and learnt how to install Vue, create Vue project, run build, move built files to CodeIgniter project, and render in view.
+
+  4. Routing  
+     ```BaseUrl/books``` didn't work and shown 404 error message.
+     
+     ***Solution:*** Turned out to be needing to add index.php in between the url ```BaseUrl/index.php/books```. Added .htaccess to rewrite the path.
+
+     
