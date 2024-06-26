@@ -64,7 +64,7 @@ export default {
     },
     redirectToViewBook(bookId) {
       window.location.href =
-        window.location.origin + `/coding-challenge/books/${bookId}`;
+        window.location.origin + `/coding-challenge/books/view/${bookId}`;
     },
   },
 };
