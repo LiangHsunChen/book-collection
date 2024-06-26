@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo base_url('assets/css/app.css'); ?>">
 </head>
 <body>
-    <div id="create-book-component">hello</div>
+    <div id="create-book-component"></div>
 
     <script src="<?php echo base_url('assets/js/chunk-vendors.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/app.js'); ?>"></script>

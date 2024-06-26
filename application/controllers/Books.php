@@ -107,11 +107,31 @@ class Books extends CI_Controller {
          show_error('Method not allowed', 405);
     }
 
+    /**
+     * Validate Book
+     *
+     * Validates the book data.
+     *
+     * @param array $book The book data.
+     * @return bool True if the book data is valid, false otherwise.
+     */
     private function validate_book($book)
     {
+        // Check if required fields are present and not empty
         if (empty($book['title']) || empty($book['author']) || empty($book['genre']) || !isset($book['published_year'])) {
             return false;
         }
+
+        // Check if author contains firstname and lastname) => "John Doe"
+        if (!preg_match('/^[a-zA-Z]+\s[a-zA-Z]+$/', $book['author'])) {
+            return false;
+        }
+
+        // Check if description exist then it must have at least 10 characters
+        if (isset($book['description']) && strlen($book['description']) < 10) {
+            return false;
+        }
+
         return true;
     }
 }
