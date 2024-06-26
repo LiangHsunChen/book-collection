@@ -94,6 +94,7 @@ export default {
       type: Function,
       required: true,
     },
+    getInitialData: Function,
   },
 
   data() {
@@ -159,6 +160,17 @@ export default {
         });
     },
     resetForm() {
+      if (this.getInitialData) {
+        this.getInitialData(this.localBook.id)
+          .then((data) => {
+            this.localBook = { ...data };
+          })
+          .catch((error) => {
+            console.error(error);
+            alert("An error occurred while resetting the form.");
+          });
+        return;
+      }
       this.localBook = {
         title: "",
         author: "",

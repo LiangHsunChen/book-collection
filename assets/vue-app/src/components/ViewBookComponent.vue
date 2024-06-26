@@ -6,7 +6,12 @@
       "Update" button.
     </p>
 
-    <BookFormComponent :book="book" :action="action" :submitForm="submitForm" />
+    <BookFormComponent
+      :book="book"
+      :action="action"
+      :submitForm="submitForm"
+      :getInitialData="fetchBook"
+    />
   </div>
 </template>
 
@@ -21,7 +26,6 @@ export default {
   data() {
     return {
       action: "update",
-      bookId: null,
       book: {},
     };
   },
@@ -33,7 +37,7 @@ export default {
       return fetch(
         `${window.location.origin}/coding-challenge/books/${this.book.id}`,
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -58,10 +62,21 @@ export default {
         });
     },
     fetchBook(id) {
-      fetch(`${window.location.origin}/coding-challenge/books/get_book/${id}`)
-        .then((response) => response.json())
+      return fetch(
+        `${window.location.origin}/coding-challenge/books/get_book/${id}`
+      )
+        .then((response) => {
+          if (!response.ok) {
+            // Handle HTTP errors
+            return response.json().then((errorData) => {
+              throw new Error(errorData.error || "Unknown error");
+            });
+          }
+          return response.json();
+        })
         .then((data) => {
-          this.book = data;
+          console.log("Book fetched:", data);
+          return data;
         })
         .catch((error) => {
           console.error("Error fetching book:", error);
