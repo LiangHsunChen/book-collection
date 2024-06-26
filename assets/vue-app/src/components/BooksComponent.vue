@@ -12,11 +12,17 @@
       <table>
         <thead>
           <tr>
+            <th>Actions</th>
             <th v-for="(value, key) in books[0]" :key="key">{{ key }}</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="book in books" :key="book.id">
+            <td>
+              <button @click="redirectToViewBook(book.id)" class="view-button">
+                Edit/View
+              </button>
+            </td>
             <td v-for="(value, key) in book" :key="key">{{ value }}</td>
           </tr>
         </tbody>
@@ -25,8 +31,6 @@
     <div v-else>
       <p>No books available.</p>
     </div>
-
-    <!-- <li v-for="book in books" :key="book.id">{{ book.title }}</li> -->
   </div>
 </template>
 
@@ -58,6 +62,10 @@ export default {
       window.location.href =
         window.location.origin + "/coding-challenge/books/create";
     },
+    redirectToViewBook(bookId) {
+      window.location.href =
+        window.location.origin + `/coding-challenge/books/${bookId}`;
+    },
   },
 };
 </script>
@@ -65,12 +73,12 @@ export default {
 <style scoped>
 #books-component {
   padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
   background-color: #f9f9f9;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -128,5 +136,18 @@ tbody tr:nth-child(even) {
   text-align: center;
   color: #666;
   margin-top: 20px;
+}
+.view-button {
+  padding: 5px 10px;
+  font-size: 14px;
+  color: white;
+  background-color: #28a745;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.view-button:hover {
+  background-color: #218838;
 }
 </style>
