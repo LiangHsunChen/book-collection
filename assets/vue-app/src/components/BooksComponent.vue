@@ -63,7 +63,28 @@ export default {
 </script>
 
 <style scoped>
+#books-component {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+p {
+  text-align: center;
+  color: #666;
+}
+
 .create-button {
+  display: block;
+  margin: 20px auto;
   padding: 10px 20px;
   font-size: 16px;
   color: white;
@@ -73,7 +94,35 @@ export default {
   cursor: pointer;
 }
 
-#books-component {
-  color: aqua;
+.create-button:hover {
+  background-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: #007bff;
+  color: white;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.no-books {
+  text-align: center;
+  color: #666;
+  margin-top: 20px;
 }
 </style>
