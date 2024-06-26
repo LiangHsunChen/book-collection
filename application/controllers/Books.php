@@ -33,6 +33,11 @@ class Books extends CI_Controller {
 
     public function get_books()
     {
+        // Check if the request method is GET
+        if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+            show_error('Method not allowed', 405);
+        }
+
         // Get all books from the database
         $books = $this->Book_model->get_books();
         // Send the books as JSON
