@@ -21,5 +21,6 @@ application/logs/*
 
 #vue
 /assets/vue-app/
-!/assets/vue-app/src/components
+!/assets/vue-app/src/
+!/assets/vue-app/src/components/
 !/assets/vue-app/src/main.js
