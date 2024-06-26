@@ -103,14 +103,30 @@ class Books extends CI_Controller {
             return false;
         }
 
+        // Check if fields are of the correct type
+        if (!is_string($book['title']) || !is_string($book['author']) || !is_string($book['genre']) || !is_int($book['published_year'])) {
+            return false;
+        }
+
+        // Check if published year is a valid year
+        if ($book['published_year'] < 0 || $book['published_year'] > date('Y')) {
+            return false;
+        }
+
         // Check if author contains firstname and lastname) => "John Doe"
         if (!preg_match('/^[a-zA-Z]+\s[a-zA-Z]+$/', $book['author'])) {
             return false;
         }
 
-        // Check if description exist then it must have at least 10 characters
-        if (isset($book['description']) && strlen($book['description']) < 10) {
-            return false;
+        // Check if description exist
+        if (isset($book['description'])) {
+            // Check if description is a string
+            if (!is_string($book['description'])) {
+                return false;
+            // Check if description is at least 100 characters
+            } else if (strlen($book['description']) < 100) {
+                return false;
+            }
         }
 
         return true;
