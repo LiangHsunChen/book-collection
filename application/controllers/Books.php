@@ -67,6 +67,24 @@ class Books extends CI_Controller {
             return;
         }
 
+        // Check if the request method is POST
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            show_error('Method not allowed', 405);
+        }
+
+        // Get the request body
+        $request_body = file_get_contents('php://input');
+        // Decode the JSON object
+        $book = json_decode($request_body);
+
+        // Create the book
+        $book_id = $this->Book_model->create_book($book);
+
+        // Send the book ID as JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode(['id' => $book_id]));
+    }
 }
 
 ?>
