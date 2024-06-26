@@ -1,6 +1,6 @@
 import Vue from "vue";
 import BooksComponent from "./components/BooksComponent.vue";
-// import AboutComponent from "./components/AboutComponent.vue";
+import CreateBookComponent from "./components/CreateBookComponent.vue";
 
 Vue.config.productionTip = false;
 
@@ -9,7 +9,7 @@ new Vue({
   render: (h) => h(BooksComponent),
 });
 
-// new Vue({
-//   el: "#app2",
-//   render: (h) => h(AboutComponent),
-// });
+new Vue({
+  el: "#create-book-component",
+  render: (h) => h(CreateBookComponent),
+});

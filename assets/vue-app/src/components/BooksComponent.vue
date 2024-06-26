@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="books-component">
     <h1>Home Page</h1>
     <p>Welcome to the home page.</p>
 
@@ -62,7 +62,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .create-button {
   padding: 10px 20px;
   font-size: 16px;
