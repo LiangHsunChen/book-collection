@@ -134,6 +134,57 @@ class Books extends CI_Controller {
         }
         $this->load->view('view_book', $data);
     }
-}
 
+    /**
+     * Get Book
+     *
+     * Sends a book as JSON.
+     *
+     * @param int $id The book ID.
+     */
+    public function get_book($id) {
+        $book = $this->Book_model->get_book($id);
+        // Check if the book exists
+        if (!$book) {
+            show_404();
+            return;
+        }
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($book));
+    }
+
+    /**
+     * Update Book
+     *
+     * Updates a book and sends the book ID as JSON.
+     *
+     * @param int $id The book ID.
+     */
+    public function update_book($id) {
+        // Get the request body
+        $request_body = file_get_contents('php://input');
+        // Decode the JSON object as an associative array
+        $book = json_decode($request_body, true);
+
+        // Validate the data
+        if (!$this->validate_book($book)) {
+            // Send an error response if validation fails
+            $this->output
+                ->set_content_type('application/json')
+                ->set_status_header(400)
+                ->set_output(json_encode(['error' => "Invalid input data."]));
+            return;
+        }
+
+        // Update the book
+        $this->Book_model->update_book($id, $book);
+
+        // Send the book ID as JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode(['id' => $id, 'title' => $book['title']]));
+        return;
+    }
+}
 ?>

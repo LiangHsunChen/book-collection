@@ -58,6 +58,10 @@ $route['translate_uri_dashes'] = FALSE;
 $route['books']['GET'] = 'books/get_books';
 # POST /books/create → Books::create_book
 $route['books/create']['POST'] = 'books/create_book';
+# GET /books/{id} → Books::get_book
+$route['books/(:num)']['GET'] = 'books/get_book/$1';
+# POST /books/{id} → Books::update_book
+$route['books/(:num)']['POST'] = 'books/update_book/$1';
 
 // Custom routes (for displaying views)
 # GET /books/create → Books::view_create_page

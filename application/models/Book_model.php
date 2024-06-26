@@ -64,5 +64,20 @@ class Book_model extends CI_Model {
         return $query->row();
     }
 
+    /**
+     * Update Book
+     *
+     * Updates a book in the database.
+     *
+     * @param int $id The book ID.
+     * @param array $data The book data.
+     */
+    public function update_book($id, $data)
+    {
+        // Update the book in the database
+        $this->db->where('id', $id);
+        $this->db->update('books', $data);
+    }
+
 }
 ?>
