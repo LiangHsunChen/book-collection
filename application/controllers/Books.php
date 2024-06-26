@@ -38,11 +38,6 @@ class Books extends CI_Controller {
      */
     public function get_books()
     {
-        // Check if the request method is GET
-        if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
-            show_error('Method not allowed', 405);
-        }
-
         // Get all books from the database
         $books = $this->Book_model->get_books();
         // Send the books as JSON
@@ -52,59 +47,45 @@ class Books extends CI_Controller {
     }
 
     /**
+     * View Create Page
+     *
+     * Loads the create book page.
+     */
+    public function view_create_page() {
+        $this->load->view('create_book');
+    }
+
+    /**
      * Create Book
      *
      * Creates a book and sends the book ID as JSON.
-     * For GET requests, it loads the create book page.
-     * For POST requests, it creates the book.
      */
     public function create_book()
     {
-        // Check if the request method is GET
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            // Load the view
-            $this->load->view('create_book');
-            return;
-        }
 
-        // Check if the request method is POST
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Get the request body
-            $request_body = file_get_contents('php://input');
-            // Decode the JSON object as an associative array
-            $book = json_decode($request_body, true);
+        // Get the request body
+        $request_body = file_get_contents('php://input');
+        // Decode the JSON object as an associative array
+        $book = json_decode($request_body, true);
 
-            // Validate the data
-            if (!$this->validate_book($book)) {
-                // Send an error response if validation fails
-                $this->output
-                    ->set_content_type('application/json')
-                    ->set_status_header(400)
-                    ->set_output(json_encode(['error' => "Invalid input data."]));
-                return;
-            }
-
-            // Create the book
-            $book_id = $this->Book_model->create_book($book);
-
-            // Send the book ID as JSON
+        // Validate the data
+        if (!$this->validate_book($book)) {
+            // Send an error response if validation fails
             $this->output
                 ->set_content_type('application/json')
-                ->set_output(json_encode(['id' => $book_id, 'title' => $book['title']]));
+                ->set_status_header(400)
+                ->set_output(json_encode(['error' => "Invalid input data."]));
             return;
         }
 
-        // Check if the request method is HEAD
-        if ($_SERVER['REQUEST_METHOD'] === 'HEAD') {
-            // Return an empty response with a 200 status code for HEAD requests
-            $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(200);
-            return;
-        }
+        // Create the book
+        $book_id = $this->Book_model->create_book($book);
 
-         // If the request method is neither GET nor POST, return 405 Method Not Allowed
-         show_error('Method not allowed', 405);
+        // Send the book ID as JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode(['id' => $book_id, 'title' => $book['title']]));
+        return;
     }
 
     /**
@@ -135,23 +116,16 @@ class Books extends CI_Controller {
         return true;
     }
 
+    /**
+     * View Book
+     *
+     * Loads the view book page.
+     *
+     * @param int $id The book ID.
+     */
     public function view_book($id)
     {
-        // Check if the request method is HEAD
-        if ($_SERVER['REQUEST_METHOD'] === 'HEAD') {
-            // Return an empty response with a 200 status code for HEAD requests
-            $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(200);
-            return;
-        }
-
-        // Check if the request method is GET
-        if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
-            show_error('Method not allowed', 405);
-            return;
-        }
-
+        // Get the book from the database
         $data['book'] = $this->Book_model->get_book($id);
         // Check if the book exists
         if (!$data['book']) {

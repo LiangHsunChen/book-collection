@@ -53,10 +53,14 @@ $route['default_controller'] = 'books';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// Custom routes
+// Required routes
 # GET /books → Books::get_books
-$route['books'] = 'books/get_books';
+$route['books']['GET'] = 'books/get_books';
 # POST /books/create → Books::create_book
-$route['books/create'] = 'books/create_book';
-# GET /books/(:any) → Books::view
+$route['books/create']['POST'] = 'books/create_book';
+
+// Custom routes (for displaying views)
+# GET /books/create → Books::view_create_page
+$route['books/create']['GET'] = 'books/view_create_page';
+# GET /books/view/{id} → Books::view_book
 $route['books/view/(:num)'] = 'books/view_book/$1';
