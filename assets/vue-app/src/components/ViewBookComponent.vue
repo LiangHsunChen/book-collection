@@ -1,0 +1,93 @@
+<template>
+  <div id="view-book-component">
+    <h1>Book Details</h1>
+    <p>
+      Update the book details by editing the form below and clicking the
+      "Update" button.
+    </p>
+
+    <BookFormComponent :book="book" :action="action" :submitForm="submitForm" />
+  </div>
+</template>
+
+<script>
+import BookFormComponent from "./BookFormComponent.vue";
+
+export default {
+  name: "ViewBookComponent",
+  components: {
+    BookFormComponent,
+  },
+  data() {
+    return {
+      action: "update",
+      bookId: null,
+      book: {},
+    };
+  },
+  created() {
+    this.book = window.book;
+  },
+  methods: {
+    submitForm(book) {
+      return fetch(
+        `${window.location.origin}/coding-challenge/books/${this.book.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(book),
+        }
+      )
+        .then((response) => {
+          if (!response.ok) {
+            // Handle HTTP errors
+            return response.json().then((errorData) => {
+              throw new Error(errorData.error || "Unknown error");
+            });
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Book updated:", data);
+          return data;
+        })
+        .catch((error) => {
+          console.error("Error updating book:", error);
+        });
+    },
+    fetchBook(id) {
+      fetch(`${window.location.origin}/coding-challenge/books/get_book/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          this.book = data;
+        })
+        .catch((error) => {
+          console.error("Error fetching book:", error);
+        });
+    },
+  },
+};
+</script>
+
+<style scoped>
+#view-book-component {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+p {
+  text-align: center;
+  color: #666;
+}
+</style>
