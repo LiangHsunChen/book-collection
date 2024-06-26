@@ -2,6 +2,7 @@
   <div id="create-book-component">
     <h1>Create Book Page</h1>
     <p>Welcome to the create book page.</p>
+
     <form @submit.prevent="submitForm">
       <div class="form-group">
         <label for="title">Title:</label>
@@ -13,6 +14,7 @@
           required
         />
       </div>
+
       <div class="form-group">
         <label for="author">Author:</label>
         <input
@@ -23,6 +25,7 @@
           required
         />
       </div>
+
       <div class="form-group">
         <label for="genre">Genre:</label>
         <input
@@ -33,16 +36,21 @@
           required
         />
       </div>
+
       <div class="form-group">
         <label for="published_year">Published Year:</label>
-        <input
-          type="number"
+        <select
           id="published_year"
           v-model="book.published_year"
           class="form-control"
           required
-        />
+        >
+          <option v-for="year in years" :key="year" :value="year">
+            {{ year }}
+          </option>
+        </select>
       </div>
+
       <div class="form-group">
         <label for="description">Description:</label>
         <textarea
@@ -51,6 +59,7 @@
           class="form-control"
         ></textarea>
       </div>
+
       <button type="submit" class="create-button">Insert New Book</button>
     </form>
   </div>
@@ -68,9 +77,19 @@ export default {
         published_year: new Date().getFullYear(),
         description: "",
       },
+      years: [],
     };
   },
+  created() {
+    this.populateYears();
+  },
   methods: {
+    populateYears() {
+      const currentYear = new Date().getFullYear();
+      for (let year = currentYear; year >= 1900; year--) {
+        this.years.push(year);
+      }
+    },
     submitForm() {
       // Handle form submission, e.g., send data to server or update state
       console.log(this.book);
