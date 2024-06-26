@@ -33,5 +33,13 @@ class Book_model extends CI_Model {
         return $query->result();
     }
 
+    public function create_book($data)
+    {
+        // Insert the book into the database
+        $this->db->insert('books', $data);
+        // Return the ID of the inserted book
+        return $this->db->insert_id();
+    }
+
 }
 ?>
