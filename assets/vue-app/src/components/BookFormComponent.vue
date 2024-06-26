@@ -77,6 +77,7 @@ export default {
       }),
     },
   },
+
   data() {
     return {
       // Create a local copy of the book prop
@@ -98,6 +99,16 @@ export default {
       // Handle form submission, e.g., send data to server or update state
       console.log(this.book);
       alert("Book details submitted!");
+      this.resetForm();
+    },
+    resetForm() {
+      this.localBook = {
+        title: "",
+        author: "",
+        genre: "",
+        published_year: new Date().getFullYear(),
+        description: "",
+      };
     },
   },
 };

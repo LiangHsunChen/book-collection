@@ -3,7 +3,7 @@
     <h1>Create Book Page</h1>
     <p>Welcome to the create book page.</p>
 
-    <BookFormComponent :book="book" />
+    <BookFormComponent />
   </div>
 </template>
 
@@ -19,17 +19,6 @@ export default {
     return {
       years: [],
     };
-  },
-  methods: {
-    // resetForm() {
-    //   this.book = {
-    //     title: "",
-    //     author: "",
-    //     genre: "",
-    //     published_year: new Date().getFullYear(), // Reset to current year
-    //     description: "",
-    //   };
-    // },
   },
 };
 </script>
