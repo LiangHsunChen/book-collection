@@ -1,1 +1,60 @@
-.create-button[data-v-75f02cb0]{padding:10px 20px;font-size:16px;color:#fff;background-color:#007bff;border:none;border-radius:5px;cursor:pointer}#books-component[data-v-75f02cb0]{color:aqua}#book-form-component[data-v-79f9a557]{padding:20px;max-width:600px;margin:0 auto;background-color:#f9f9f9;border-radius:5px;box-shadow:0 0 10px rgba(0,0,0,.1)}.form-group[data-v-79f9a557]{margin-bottom:15px}.form-group label[data-v-79f9a557]{display:block;margin-bottom:5px;font-weight:700}.form-group input[data-v-79f9a557]{width:100%;padding:8px;box-sizing:border-box;border:1px solid #ccc;border-radius:4px}.create-button[data-v-79f9a557]{padding:10px 20px;font-size:16px;color:#fff;background-color:#007bff;border:none;border-radius:5px;cursor:pointer}.create-button[data-v-79f9a557]:hover{background-color:#0056b3}#create-book-component[data-v-355762c0]{margin-top:20px;padding:20px;border:1px solid #ccc;border-radius:5px;background-color:#f9f9f9}
+.create-button[data-v-75f02cb0] {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#books-component[data-v-75f02cb0] {
+  color: aqua;
+}
+#book-form-component[data-v-1a9c20a1] {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-group[data-v-1a9c20a1] {
+  margin-bottom: 15px;
+}
+.form-group label[data-v-1a9c20a1] {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+.form-group input[data-v-1a9c20a1] {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.create-button[data-v-1a9c20a1] {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.create-button[data-v-1a9c20a1]:hover {
+  background-color: #0056b3;
+}
+#create-book-component[data-v-af10ebc6] {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.success-message {
+  margin-top: 20px;
+  color: green;
+  font-weight: bold;
+}

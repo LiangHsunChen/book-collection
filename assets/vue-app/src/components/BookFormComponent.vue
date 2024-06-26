@@ -1,6 +1,6 @@
 <template>
   <div id="book-form-component">
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="handleSubmit">
       <div class="form-group">
         <label for="title">Title:</label>
         <input
@@ -58,6 +58,10 @@
       </div>
 
       <button type="submit" class="create-button">Insert New Book</button>
+
+      <div v-if="successMessage" class="success-message">
+        {{ successMessage }}
+      </div>
     </form>
   </div>
 </template>
@@ -75,6 +79,10 @@ export default {
         published_year: new Date().getFullYear(),
         description: "",
       }),
+    },
+    submitForm: {
+      type: Function,
+      required: true,
     },
   },
 
@@ -95,11 +103,16 @@ export default {
         this.years.push(year);
       }
     },
-    submitForm() {
-      // Handle form submission, e.g., send data to server or update state
-      console.log(this.book);
-      alert("Book details submitted!");
-      this.resetForm();
+    handleSubmit() {
+      this.submitForm(this.localBook)
+        .then((data) => {
+          this.resetForm();
+          this.successMessage = `Book ${data.title} successfully created with id: ${data.id}`;
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("An error occurred while submitting the form.");
+        });
     },
     resetForm() {
       this.localBook = {
@@ -154,5 +167,11 @@ export default {
 
 .create-button:hover {
   background-color: #0056b3;
+}
+
+.success-message {
+  margin-top: 20px;
+  color: green;
+  font-weight: bold;
 }
 </style>
