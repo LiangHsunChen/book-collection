@@ -1,11 +1,12 @@
 <template>
   <div id="books-component">
-    <h1>Home Page</h1>
-    <p>Welcome to the home page.</p>
+    <HeaderComponent />
+
+    <h1>Home</h1>
 
     <!-- Create button for insert a new book -->
     <button @click="redirectToCreateBook" class="create-button">
-      Insert New Book
+      + Create
     </button>
 
     <!-- Display successfully deleted book message -->
@@ -43,8 +44,13 @@
 </template>
 
 <script>
+import HeaderComponent from "./HeaderComponent.vue";
+
 export default {
   name: "BooksComponent",
+  components: {
+    HeaderComponent,
+  },
   data() {
     return {
       books: [],
@@ -124,14 +130,10 @@ h1 {
   color: #333;
 }
 
-p {
-  text-align: center;
-  color: #666;
-}
-
 .create-button {
   display: block;
-  margin: 20px auto;
+  width: 110px;
+  margin-left: auto;
   padding: 10px 20px;
   font-size: 16px;
   color: white;
@@ -192,6 +194,7 @@ tbody tr:nth-child(even) {
 
 .view-button {
   background-color: #28a745;
+  margin-bottom: 2px;
 }
 
 .view-button:hover {
@@ -210,5 +213,11 @@ tbody tr:nth-child(even) {
   margin-top: 20px;
   color: green;
   font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+  .create-button {
+    margin: auto;
+  }
 }
 </style>

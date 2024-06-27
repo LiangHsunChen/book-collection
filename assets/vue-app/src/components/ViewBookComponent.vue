@@ -1,5 +1,7 @@
 <template>
   <div id="view-book-component">
+    <HeaderComponent currentPage="Book Details" />
+
     <h1>Book Details</h1>
     <p>
       Update the book details by editing the form below and clicking the
@@ -16,11 +18,13 @@
 </template>
 
 <script>
+import HeaderComponent from "./HeaderComponent.vue";
 import BookFormComponent from "./BookFormComponent.vue";
 
 export default {
   name: "ViewBookComponent",
   components: {
+    HeaderComponent,
     BookFormComponent,
   },
   data() {

@@ -1,5 +1,7 @@
 <template>
   <div id="create-book-component">
+    <HeaderComponent currentPage="Create Book" />
+
     <h1>Create a new Book</h1>
     <p>Please fill out the form below to create a new book.</p>
 
@@ -8,11 +10,13 @@
 </template>
 
 <script>
+import HeaderComponent from "./HeaderComponent.vue";
 import BookFormComponent from "./BookFormComponent.vue";
 
 export default {
   name: "CreateBookComponent",
   components: {
+    HeaderComponent,
     BookFormComponent,
   },
   data() {
