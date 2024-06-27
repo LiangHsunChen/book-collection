@@ -149,6 +149,8 @@ class Books extends CI_Controller {
             show_404();
             return;
         }
+        // Published year retrieved from the database is a string, convert it to an integer
+        $data['book']->published_year = (int)$data['book']->published_year;
         $this->load->view('view_book', $data);
     }
 
@@ -167,6 +169,8 @@ class Books extends CI_Controller {
             show_404();
             return;
         }
+        // Published year retrieved from the database is a string, convert it to an integer
+        $book->published_year = (int)$book->published_year;
         $this->output
             ->set_content_type('application/json')
             ->set_output(json_encode($book));
