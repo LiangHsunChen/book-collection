@@ -62,6 +62,8 @@ $route['books/create']['POST'] = 'books/create_book';
 $route['books/(:num)']['GET'] = 'books/get_book/$1';
 # POST /books/{id} → Books::update_book
 $route['books/(:num)']['POST'] = 'books/update_book/$1';
+# GET /books/delete/{id} → Books::delete_book
+$route['books/delete/(:num)']['GET'] = 'books/delete_book/$1';
 
 // Custom routes (for displaying views)
 # GET /books/create → Books::view_create_page

@@ -51,7 +51,8 @@ class Books extends CI_Controller {
      *
      * Loads the create book page.
      */
-    public function view_create_page() {
+    public function view_create_page()
+    {
         $this->load->view('create_book');
     }
 
@@ -158,7 +159,8 @@ class Books extends CI_Controller {
      *
      * @param int $id The book ID.
      */
-    public function get_book($id) {
+    public function get_book($id)
+    {
         $book = $this->Book_model->get_book($id);
         // Check if the book exists
         if (!$book) {
@@ -177,7 +179,8 @@ class Books extends CI_Controller {
      *
      * @param int $id The book ID.
      */
-    public function update_book($id) {
+    public function update_book($id)
+    {
         // Get the request body
         $request_body = file_get_contents('php://input');
         // Decode the JSON object as an associative array
@@ -200,6 +203,25 @@ class Books extends CI_Controller {
         $this->output
             ->set_content_type('application/json')
             ->set_output(json_encode(['id' => $id, 'title' => $book['title']]));
+        return;
+    }
+
+    /**
+     * Delete Book
+     *
+     * Deletes a book and sends the book ID as JSON.
+     *
+     * @param int $id The book ID.
+     */
+    public function delete_book($id)
+    {
+        // Delete the book
+        $this->Book_model->delete_book($id);
+
+        // Send the book ID as JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode(['id' => $id]));
         return;
     }
 }

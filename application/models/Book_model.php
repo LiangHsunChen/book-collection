@@ -79,5 +79,17 @@ class Book_model extends CI_Model {
         $this->db->update('books', $data);
     }
 
+    /**
+     * Delete Book
+     *
+     * Deletes a book from the database.
+     *
+     * @param int $id The book ID.
+     */
+    public function delete_book($id)
+    {
+        // Delete the book from the database
+        $this->db->delete('books', array('id' => $id));
+    }
 }
 ?>
