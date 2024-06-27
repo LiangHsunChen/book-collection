@@ -39,3 +39,77 @@ CRUD Application for a Book Collection
       3. Passing through URL parameters
 
      ***Solution:*** For this project, since the book details is not sensitive data, I chose to put the whole ```book``` object in ```window``` as it can also save the initial fetching API call to get the book details.
+
+
+## File Structure
+```zsh
+├── README.md
+├── application
+│   ├── config
+│   │   ├── autoload.php
+│   │   ├── config.php
+│   │   ├── constants.php
+│   │   ├── database.php
+│   │   ├── doctypes.php
+│   │   ├── foreign_chars.php
+│   │   ├── hooks.php
+│   │   ├── index.html
+│   │   ├── memcached.php
+│   │   ├── migration.php
+│   │   ├── mimes.php
+│   │   ├── profiler.php
+│   │   ├── routes.php
+│   │   ├── smileys.php
+│   │   └── user_agents.php
+│   ├── controllers
+│   │   ├── Books.php
+│   │   ├── Welcome.php
+│   │   └── index.html
+│   ├── core
+│   │   └── ...
+│   ├── helpers
+│   │   └── ...
+│   ├── hooks
+│   │   └── ...
+│   ├── index.html
+│   ├── language
+│   │   ├── ...
+│   ├── libraries
+│   │   └── ...
+│   ├── logs
+│   │   └── ...
+│   ├── models
+│   │   ├── Book_model.php
+│   │   └── index.html
+│   ├── third_party
+│   │   └── index.html
+│   └── views
+│       ├── books.php
+│       ├── create_book.php
+│       ├── errors
+│       │   ├── ...
+│       ├── index.html
+│       ├── view_book.php
+│       └── welcome_message.php
+├── assets
+│   ├── css
+│   │   └── app.css
+│   ├── js
+│   │   ├── app.js
+│   │   ├── app.js.map
+│   │   ├── chunk-vendors.js
+│   │   └── chunk-vendors.js.map
+│   └── vue-app
+│       └── src
+│           ├── components
+│           │   ├── BookFormComponent.vue
+│           │   ├── BooksComponent.vue
+│           │   ├── CreateBookComponent.vue
+│           │   ├── HeaderComponent.vue
+│           │   └── ViewBookComponent.vue
+│           └── main.js
+├── composer.json
+├── composer.lock
+└── index.php
+
+```
