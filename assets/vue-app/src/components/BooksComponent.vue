@@ -2,43 +2,48 @@
   <div id="books-component">
     <HeaderComponent />
 
-    <h1>Home</h1>
+    <div class="container">
+      <h1>Home</h1>
 
-    <!-- Create button for insert a new book -->
-    <button @click="redirectToCreateBook" class="create-button">
-      + Create
-    </button>
+      <!-- Create button for insert a new book -->
+      <button @click="redirectToCreateBook" class="create-button">
+        + Create
+      </button>
 
-    <!-- Display successfully deleted book message -->
-    <div v-if="successDeleteMessage" class="success-delete-message">
-      {{ successDeleteMessage }}
-    </div>
+      <!-- Display successfully deleted book message -->
+      <div v-if="successDeleteMessage" class="success-delete-message">
+        {{ successDeleteMessage }}
+      </div>
 
-    <div class="books-table" v-if="books.length > 0">
-      <table>
-        <thead>
-          <tr>
-            <th>Actions</th>
-            <th v-for="(value, key) in books[0]" :key="key">{{ key }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="book in books" :key="book.id">
-            <td class="action-buttons">
-              <button @click="redirectToViewBook(book.id)" class="view-button">
-                Edit/View
-              </button>
-              <button @click="deleteBook(book.id)" class="delete-button">
-                Delete
-              </button>
-            </td>
-            <td v-for="(value, key) in book" :key="key">{{ value }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div v-else>
-      <p>No books available.</p>
+      <div class="books-table" v-if="books.length > 0">
+        <table>
+          <thead>
+            <tr>
+              <th>Actions</th>
+              <th v-for="(value, key) in books[0]" :key="key">{{ key }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="book in books" :key="book.id">
+              <td class="action-buttons">
+                <button
+                  @click="redirectToViewBook(book.id)"
+                  class="view-button"
+                >
+                  Edit/View
+                </button>
+                <button @click="deleteBook(book.id)" class="delete-button">
+                  Delete
+                </button>
+              </td>
+              <td v-for="(value, key) in book" :key="key">{{ value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div v-else>
+        <p>No books available.</p>
+      </div>
     </div>
   </div>
 </template>
@@ -116,13 +121,15 @@ export default {
 
 <style scoped>
 #books-component {
-  padding: 20px;
   background-color: #f9f9f9;
-  border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.container {
+  padding: 0 20px;
 }
 
 h1 {
@@ -148,6 +155,7 @@ h1 {
 }
 .books-table {
   overflow: auto;
+  padding-bottom: 30px;
 }
 
 table {
