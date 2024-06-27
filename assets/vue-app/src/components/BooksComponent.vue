@@ -18,9 +18,12 @@
         </thead>
         <tbody>
           <tr v-for="book in books" :key="book.id">
-            <td>
+            <td class="action-buttons">
               <button @click="redirectToViewBook(book.id)" class="view-button">
                 Edit/View
+              </button>
+              <button @click="deleteBook(book.id)" class="delete-button">
+                Delete
               </button>
             </td>
             <td v-for="(value, key) in book" :key="key">{{ value }}</td>
@@ -65,6 +68,11 @@ export default {
     redirectToViewBook(bookId) {
       window.location.href =
         window.location.origin + `/coding-challenge/books/view/${bookId}`;
+    },
+    deleteBook(bookId) {
+      if (confirm("Are you sure you want to delete this book?")) {
+        console.log("Deleting book with ID:", bookId);
+      }
     },
   },
 };
@@ -137,17 +145,34 @@ tbody tr:nth-child(even) {
   color: #666;
   margin-top: 20px;
 }
-.view-button {
+
+.action-buttons {
+  text-align: center;
+}
+
+.view-button,
+.delete-button {
   padding: 5px 10px;
   font-size: 14px;
   color: white;
-  background-color: #28a745;
   border: none;
   border-radius: 3px;
   cursor: pointer;
 }
 
+.view-button {
+  background-color: #28a745;
+}
+
 .view-button:hover {
   background-color: #218838;
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
 }
 </style>
