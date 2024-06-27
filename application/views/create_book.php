@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Coding Challenge</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/app.css'); ?>">
 </head>
-<body>
+<body style="margin: 0;">
     <div id="create-book-component"></div>
 
     <script src="<?php echo base_url('assets/js/chunk-vendors.js'); ?>"></script>
