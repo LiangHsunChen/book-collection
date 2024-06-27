@@ -22,12 +22,12 @@ CRUD Application for a Book Collection
 
      ***Solution:*** Search online and learnt how to install Vue, create Vue project, run build, move built files to CodeIgniter project, and render in view.
 
-  4. Routing  
+  4. Routing path  
      ```BaseUrl/books``` didn't work and shown 404 error message.
      
      ***Solution:*** Turned out to be needing to add index.php in between the url ```BaseUrl/index.php/books```. Added .htaccess to rewrite the path.
 
-  5. Accidently replaced whole Vue app directory
-     When trying to make the built js and css files automatically built under ```assets``` directory instead of dist, the whole Vue app directory include Vue packages and node modules.
+  5. Routing syntax  
+     CI3's Syntax for routing to specific request method in ```routes.php``` is different from CI4. I first searched online and found an article says CI3 does not support routing with request method in ```routes.php```, but have to check the request method in controller. 
      
-     ***Solution:*** Recreated vue project, retrieved main.js, config, and components files from git then put them back in ```components``` directory
+     ***Solution:*** When I was looking at CI3's documentation, I caught a glimpse on the ```Using HTTP verbs in routes``` section and realised CI3 does support the syntax for route path with request method.
