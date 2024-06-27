@@ -12,7 +12,7 @@ CRUD Application for a Book Collection
     
   ```sed -i '' s/name{0}/name[0]/ vendor/mikey179/vfsstream/src/main/php/org/bovigo/vfs/vfsStream.php```
 
-  2. XAMPP web server is using PHP 8.2
+  2. XAMPP web server's PHP version is too high  
      This cuased errors like  ```Creation of dynamic property CI_URI::$config is deprecated```.  
 
      ***Solution:*** Was trying to edit config files to change the PHP version XAMPP is using but then realised I need to install a different version of XAMPP.
