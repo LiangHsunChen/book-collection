@@ -31,3 +31,11 @@ CRUD Application for a Book Collection
      CI3's Syntax for routing to specific request method in ```routes.php``` is different from CI4. I first searched online and found an article says CI3 does not support routing with request method in ```routes.php```, but have to check the request method in controller. 
      
      ***Solution:*** When I was looking at CI3's documentation, I caught a glimpse on the ```Using HTTP verbs in routes``` section and realised CI3 does support the syntax for route path with request method.
+
+  6. Passing data from CI3 to Vue app  
+     When trying to pass the current ```book:id``` from view to vue component for displaying the book details, I found there is 3 ways to do it:  
+      1. Embedding in the HTML as a global variable, using ```window.variable```.
+      2. Using AJAX requests, calling endpoint to get the current id.
+      3. Passing through URL parameters
+
+     ***Solution:*** For this project, since the book details is not sensitive data, I chose to put the whole ```book``` object in ```window``` as it can also save the initial fetching API call to get the book details.
