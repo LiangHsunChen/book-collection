@@ -68,6 +68,7 @@
 
       <button type="submit" class="create-button">{{ actionButton }}</button>
 
+      <!-- Display success message -->
       <div v-if="successMessage" class="success-message">
         {{ successMessage }}
       </div>
