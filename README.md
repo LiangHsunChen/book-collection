@@ -92,22 +92,17 @@ CRUD Application for a Book Collection
 │       ├── view_book.php
 │       └── welcome_message.php
 ├── assets
-│   ├── css
-│   │   └── app.css
-│   ├── js
-│   │   ├── app.js
-│   │   ├── app.js.map
-│   │   ├── chunk-vendors.js
-│   │   └── chunk-vendors.js.map
-│   └── vue-app
-│       └── src
-│           ├── components
-│           │   ├── BookFormComponent.vue
-│           │   ├── BooksComponent.vue
-│           │   ├── CreateBookComponent.vue
-│           │   ├── HeaderComponent.vue
-│           │   └── ViewBookComponent.vue
-│           └── main.js
+│   └── components
+│       ├── BookFormComponent.css
+│       ├── BookFormComponent.js
+│       ├── BooksComponent.css
+│       ├── BooksComponent.js
+│       ├── CreateBookComponent.css
+│       ├── CreateBookComponent.js
+│       ├── HeaderComponent.css
+│       ├── HeaderComponent.js
+│       ├── ViewBookComponent.css
+│       └── ViewBookComponent.js
 ├── composer.json
 ├── composer.lock
 └── index.php
