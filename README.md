@@ -1,4 +1,4 @@
-# coding-challenge
+# Book Collection
 CRUD Application for a Book Collection
 
 ## Challenges:
